@@ -15,6 +15,8 @@ import plotly.express as px
 app = dash.Dash(__name__)
 server = app.server
 
+#prueba
+
 top_50_sp500 = [
     {'label': 'Apple Inc', 'value': 'AAPL'},
     {'label': 'Microsoft Corporation', 'value': 'MSFT'},
@@ -288,7 +290,8 @@ def update_indicator_graph(selected_stock, selected_indicators, selected_time_ra
             secondary_y=True,
         )
 
-    fig.update_layout(title=f'{selected_stock} Indicators')
+    fig.update_layout(
+    title=f'{selected_stock} Indicators', legend=dict(title="Bollinger Bands are a technical analysis tool that consists of a set of three lines plotted in relation to a security's price, indicating levels of market volatility.",  orientation='h',y=-0.1,  xanchor='center',x=0.5))
     fig.update_yaxes(title_text="RSI", secondary_y=False)
     fig.update_yaxes(title_text="Bollinger Bands", secondary_y=True)
 
@@ -372,7 +375,12 @@ def update_anomaly_graph(selected_stock, selected_time_range):
                                  marker=dict(color='red', size=10),
                                  name='Anomaly'))
     
-    fig.update_layout(title='Stock Price Anomaly Detection')
+    fig.update_layout(
+    title='Stock Price Anomaly Detection',
+    legend=dict(
+        title='Stock anomaly detection involves identifying unusual patterns or deviations in stock market data that may indicate significant events or market irregularities.', 
+        y=-0.1,                    
+        xanchor='center',x=0.5))
     return fig
 
 
